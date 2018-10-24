@@ -29,6 +29,7 @@ namespace DatingApp.API.Controllers
 
         #region Public Methods
         // GET api/values
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
