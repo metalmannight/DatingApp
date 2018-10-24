@@ -58,6 +58,9 @@ namespace DatingApp.API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+
+            // throw new Exception("Computer says no!");
+
             // Check if we have a user with the correct password
             var userFromRepo = await this._repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
@@ -95,10 +98,11 @@ namespace DatingApp.API.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             // 6. Return the token through the "Ok" status code.
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
-            // return StatusCode(100);
+            // return StatusCode(100);   
         }
 
         #endregion Public Methods
